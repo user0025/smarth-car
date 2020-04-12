@@ -25,11 +25,17 @@ or
 
     $ pip install -r requirements_dev.txt --user
 
+then:
+
+    $ export FLASK_APP=main.py
+
+    $ python -m flask run
+
 ## Estrutura de arquivos
 
 Como o projeto sera composto por código de varias partes, crie seus modulos em
 
-    smarth-car\modules
+    smarth-car\packages
 
 assim, todos teram acesso e visibilidade ao código parceiro para que a integração seja facilidata
 
