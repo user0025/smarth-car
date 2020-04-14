@@ -19,9 +19,15 @@ class Server:
             with client:
                 print('Connected by', addr)
                 if len(self.functions) > 0:
-                    for data in self.functions:
+                    for functionObject in self.functions:
+                        data = client.recv(1024).decode('utf-8')
+                        dataJson = json.load(data)
 
-                        client.send(bytes(data, 'utf-8'))
+                        if dataJson['mensage'] == functionObject['mensageType']:
+                            resultFunction = functionObject['function']
+
+                            client.send(
+                                bytes(resultFunction(dataJson['data']), 'utf-8'))
 
     def sendMessage(self, typeMessage, message, address, port, json=True):
         try:
@@ -36,14 +42,18 @@ class Server:
         except:
             print(f'{typeMessage} refuse')
 
-    def appendFunction(self, func, args=False):
-        def executeFunction():
+    def appendFunction(self, mensageType, func, args=False):
+        def executeFunction(dataMensage):
             if args:
-                return func(args)
+                return func(args, dataMensage)
             return func()
 
-        resultFunc = executeFunction()
-        self.functions.append(resultFunc)
+        functionDic = {
+            'mensageType': mensageType,
+            'function': executeFunction
+        }
+
+        self.functions.append(functionDic)
 
 
 serverInstance = Server()
