@@ -1,7 +1,7 @@
-from project.packages.server.server import app
-from flask_socketio import SocketIO
+from project.packages.server import server
+from project.packages.arduino import integracaoArduino
 
-socketio = SocketIO(app)
+server.serverInstance.sendMessage('arduino-command', integracaoArduino.sendComand(7),
+                                  '127.0.0.1', 4444, False)
 
-if __name__ == '__main__':
-    socketio.run(app, host='localhost', port=5555)
+server.serverInstance.createServer()
