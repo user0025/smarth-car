@@ -19,7 +19,7 @@ Tem como objetivo o desenvolvimento de um carrinho de controle remoto autônomo 
 
 No seu terminal, dentro da pasta root do projeto rode para instalar as dependências do projeto:
 
-    $ pip install .
+    $ pip install requirements_dev.txt
 
 or
 
@@ -27,9 +27,7 @@ or
 
 then:
 
-    $ export FLASK_APP=main.py
-
-    $ python -m flask run
+    $ python ./main.py
 
 ## Estrutura de arquivos
 
