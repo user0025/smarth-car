@@ -19,7 +19,7 @@ Tem como objetivo o desenvolvimento de um carrinho de controle remoto autônomo 
 
 No seu terminal, dentro da pasta root do projeto rode para instalar as dependências do projeto:
 
-    $ pip install requirements_dev.txt
+    $ pip install -r requirements_dev.txt
 
 or
 
