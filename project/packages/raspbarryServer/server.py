@@ -2,10 +2,10 @@ import socket
 import json
 
 
-class Server:
+class ServerRaspy:
 
     HOST = socket.gethostname()
-    PORT = 5555
+    PORT = 4444
     socketServer = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     functions = []
@@ -57,4 +57,4 @@ class Server:
         self.functions.append(functionDic)
 
 
-serverInstance = Server()
+serverInstance = ServerRaspy()

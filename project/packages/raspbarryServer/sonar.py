@@ -2,6 +2,7 @@
 import sys
 import time
 import signal
+from server import serverInstance
 import RPi.GPIO as GPIO
 # Define a numeração dos pinos de acordo com a placa
 GPIO.setmode(GPIO.BOARD)
@@ -74,6 +75,8 @@ while True:
     else:
         distance = -1
     # Imprime o valor da distância arredondado para duas casas decimais
+
     print(round(distance, 2))
+    serverInstance.sendMessage('SoundWave', distance, 'server.socket', 5555)
     # Um pequeno delay para manter a média da taxa de amostragem
     time.sleep(1/sampling_rate)
