@@ -5,4 +5,5 @@ import numpy as np
 
 class Tensonar:
 
-    def appendCVS(self):
+    def createNeural():
+        tf.Tensor
